@@ -1,0 +1,32 @@
+01. Go to github.com and create an account by clicking on "Sign Up"
+02. Enter your email, create a password and a username - click on continue after each one
+03. Follow the steps on the screen to finish your account set Up
+
+04. Log in and create a new repository, click on the green "new" button
+05. The owner of the new repository will be you respectively your username
+
+06. To upload the necessary files you have to create them first
+07. Therefore create a folder on your machine and the index.html in it
+08. Add a random picture you might like to the folder
+09. Open the index.html file with VS Code or any other text editor, you can also
+    create that file with the editor
+10. Insert the following code to the index.html file:
+
+    <html>
+        <h1> "xxxx" Portfolio</h1>   
+        <img src="./PICNAME.jpg" />
+    </html>
+
+11. Change "xxxx" to your Name
+12. Change PICNAME to the name of your picture
+
+13. Save your files
+14. After you clicked on the green "new" button and created your repository you can now
+    click on "uploading an existing file" and load both files upload (it's a bit hidden in the Quick Setup option)
+15. Click on commit to save and go on
+
+16. Now you can go to xxxx.github.io to view your page!
+
+Congratulations!!
+
+Just something added here for push/pull tests
