@@ -1,4 +1,4 @@
-const myHeading = document.querySelector('p1');
+const myHeading = document.querySelector('h2');
 myHeading.textContent = 'Hello World of JavaScript!'
 
 document.querySelector('html').addEventListener('click', function() {
