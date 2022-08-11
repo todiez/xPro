@@ -42,8 +42,8 @@ var create = function(x,y,color){
     div.style.position = 'absolute';    
     div.style.left = x + 'px';    
     div.style.top = y + 'px';    
-    div.style.width = '8px';    
-    div.style.height = '8px';    
+    div.style.width = '15px';    
+    div.style.height = '15px';    
     div.style.borderRadius = '45%';
     div.style.background = color;    
 
