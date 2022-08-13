@@ -19,12 +19,39 @@
 
   // YOUR CODE
   // ----------------
+  var edge = 0;
+  var posMax = 80;
+
   function moveIt() {
-    position = position + velocity;
-    ball.style.left = position + 'px';
+    if (position < posMax && edge === 0) {
+      position = position + velocity;
+      ball.style.left = position + "px";
+
+      if(position >= posMax)
+         edge = 1;
+
+    } else if (position > 0 && edge === 1) {
+      position = position - velocity;
+      ball.style.left = position + "px";
+
+      if(position < 1)
+         edge = 0;
+    } else
+    clearInterval(intervID);
   }
+  var intervID = setInterval(moveIt, 5);
 
-  setInterval(moveIt, 10);
-  
 
+
+
+
+  //Ball anhalten funktioniert so:
+
+  // function moveIt() {
+  //   if (position < posMax) {
+  //     position = position + velocity;
+  //     ball.style.left = position + "px";
+  //   } else clearInterval(intervID);
+  // }
+  // var intervID = setInterval(moveIt, 5);
 </script>
