@@ -13,12 +13,51 @@
 ></div>
 
 <script>
-  var velocityX = 5;
-  var velocityY = 3;
+  var velocityX = 4;
+  var velocityY = 1;
   var positionX = 0;
   var positionY = 0;
   var ball = document.getElementById("ball");
 
   // YOUR CODE
   // ----------------
+  var edge = 0;
+  var posMaxX = 580;
+  var posMaxY = 450;
+
+  function moveIt() {
+    if (positionX < posMaxX && edge === 0) {
+      positionX = positionX + velocityX;
+      ball.style.left = positionX + "px";
+
+      if(positionX >= posMaxX)
+         edge = 1;
+    } 
+    if (positionY < posMaxY && edge === 0) {
+      positionY = positionY + velocityY;
+      ball.style.top = positionY + "px";
+      
+      if(positionY >= posMaxY)
+         edge = 1;
+    }
+  
+
+      
+    } else if (positionX > 0 && edge === 1) {
+      positionX = positionX - velocityX;
+      ball.style.left = positionX + "px";
+
+      positionY = positionY - velocityY;
+      ball.style.top = positionY + "px";
+
+      if(positionX < 1)
+         edge = 0;
+    } else
+    clearInterval(intervID);
+  }
+  var intervID = setInterval(moveIt, 5);
+  
+  
+
+
 </script>
