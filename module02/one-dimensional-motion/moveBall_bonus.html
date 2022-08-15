@@ -11,13 +11,12 @@
     background: rgb(25, 90, 170);
   "
 ></div>
-
 <div
   id="ball2"
   style="
     z-index: 5;
     position: absolute;
-    left: 0px;
+    left: 150px;
     top: 0px;
     width: 50px;
     height: 50px;
@@ -25,96 +24,210 @@
     background: rgb(255, 0, 0);
   "
 ></div>
-
+<div
+  id="x"
+  style="
+    z-index: 5;
+    position: absolute;
+    left: 0px;
+    top: 350px;
+    width: 351px;
+    height: 1px;
+    border-radius: 0%;
+    background: black;
+  "
+></div>
+<div
+  id="y"
+  style="
+    z-index: 5;
+    position: absolute;
+    left: 350px;
+    top: 0px;
+    width: 1px;
+    height: 351px;
+    border-radius: 0%;
+    background: black;
+  "
+></div>
 
 <script>
-  var velocityX = 1;
-  var velocityY = 1;
+  var velocityX = 3;
+  var velocityY = 7;
+  var velocityX2 = 6;
+  var velocityY2 = 2;
 
   var positionX = 0;
   var positionY = 0;
+  var positionX2 = 0;
+  var positionY2 = 0;
   var ball = document.getElementById("ball");
   var ball2 = document.getElementById("ball2");
-  
+ 
 
   var Xmin = 0;
   var Xmax = 300;
   var Ymin = 0;
   var Ymax = 300;
 
+  var Xmin2 = 0;
+  var Xmax2 = 300;
+  var Ymin2 = 0;
+  var Ymax2 = 300;
+
   // YOUR CODE
   // ----------------
 
   var reverse = false;
-  var rgbArray = ["rgb(21, 2, 231)",
-                  "rgb(121, 22, 23)",
-                  "rgb(21, 22, 23)",
-                  "rgb(21, 212, 123)",
-                  "rgb(11, 222, 23)",
-                  "rgb(211, 22, 243)",
-                  "rgb(100, 222, 23)",
-                  "rgb(217, 22, 23)",
-                  "rgb(121, 122, 3)",
-                  "rgb(21, 252, 0)",
-                  "rgb(21, 0, 23)",
-                  "rgb(0, 22, 203)"                
-                ]
+  var reverseX = false;
+  var reverseY = false;
+  var reverseX2 = false;
+  var reverseY2 = false;
+  var rgbArray = [
+    "rgb(21, 2, 231)",
+    "rgb(121, 22, 23)",
+    "rgb(21, 22, 23)",
+    "rgb(21, 212, 123)",
+    "rgb(11, 222, 23)",
+    "rgb(211, 22, 243)",
+    "rgb(100, 222, 23)",
+    "rgb(217, 22, 23)",
+    "rgb(121, 122, 3)",
+    "rgb(21, 252, 0)",
+    "rgb(21, 0, 23)",
+    "rgb(0, 22, 203)",
+  ];
 
-  function moveB() {
-    if (reverse) {
+  function moveBchaos() {
+    if (reverseX && reverseY) {
       positionX = positionX - velocityX;
-      positionY = positionY - velocityY;
       ball.style.left = positionX + "px";
+      positionY = positionY - velocityY;
       ball.style.top = positionY + "px";
-      ball.style.width = "60px";
+     
+    } else if (!reverseX && reverseY) {
+      positionX = positionX + velocityX;
+      ball.style.left = positionX + "px";
+      positionY = positionY - velocityY;
+      ball.style.top = positionY + "px";
       
-    } else {
-      positionX = positionX + velocityX;
-      positionY = positionY + velocityY;
-      ball.style.left = positionX + "px";
-      ball.style.top = positionY + "px";
-      ball.style.width = "50px";
-    }
-
-    if (
-      positionX > Xmax ||
-      positionX === Xmin ||
-      positionY > Ymax ||
-      positionY === Ymin
-    ) {
-      reverse = !reverse;
-      ball.style.background = rgbArray[Math.floor(Math.random() * rgbArray.length)]
-    }
-  }
-
-  function moveB2() {
-    if (reverse) {
+    } else if (reverseX && !reverseY) {
       positionX = positionX - velocityX;
-      positionY = positionY - velocityY;
-      ball2.style.left = positionX + "px";
-      ball2.style.top = positionY + "px";
-      ball2.style.width = "40px";
-    } else {
-      positionX = positionX + velocityX;
+      ball.style.left = positionX + "px";
       positionY = positionY + velocityY;
-      ball2.style.left = positionX + "px";
-      ball2.style.top = positionY + "px";
-      ball2.style.width = "50px";
+      ball.style.top = positionY + "px";
+
+    } else if (!reverseX && !reverseY) {
+      positionX = positionX + velocityX;
+      ball.style.left = positionX + "px";
+      positionY = positionY + velocityY;
+      ball.style.top = positionY + "px";
     }
 
-    if (
-      positionX > Xmax ||
-      positionX === Xmin ||
-      positionY > Ymax ||
-      positionY === Ymin
-    ){
-      reverse = !reverse;
+    //---------------Edge----------
+    if (positionX > Xmax || positionX === 0) {
+      reverseX = !reverseX;
+      ball.style.background = rgbArray[Math.floor(Math.random() * rgbArray.length)]
+    } 
+    if (positionY > Ymax || positionY === 0) {
+      reverseY = !reverseY;
+      ball.style.background = rgbArray[Math.floor(Math.random() * rgbArray.length)]
+    }    
+  }
+  
+  function moveBchaos2() {
+    if (reverseX2 && reverseY2) {
+      positionX2 = positionX2 - velocityX2;
+      ball2.style.left = positionX2 + "px";
+      positionY2 = positionY2 - velocityY2;
+      ball2.style.top = positionY2 + "px";
+     
+    } else if (!reverseX2 && reverseY2) {
+      positionX2 = positionX2 + velocityX2;
+      ball2.style.left = positionX2 + "px";
+      positionY2 = positionY2 - velocityY2;
+      ball2.style.top = positionY2 + "px";
+      
+    } else if (reverseX2 && !reverseY2) {
+      positionX2 = positionX2 - velocityX2;
+      ball2.style.left = positionX2 + "px";
+      positionY2 = positionY2 + velocityY2;
+      ball2.style.top = positionY2 + "px";
+
+    } else if (!reverseX2 && !reverseY2) {
+      positionX2 = positionX2 + velocityX2;
+      ball2.style.left = positionX2 + "px";
+      positionY2 = positionY2 + velocityY2;
+      ball2.style.top = positionY2 + "px";
+    }
+
+    //---------------Edge----------
+    if (positionX2 > Xmax2 || positionX2 === 0) {
+      reverseX2 = !reverseX2;
       ball2.style.background = rgbArray[Math.floor(Math.random() * rgbArray.length)]
-    }
-  }  
+    } 
+    if (positionY2 > Ymax2 || positionY2 === 0) {
+      reverseY2 = !reverseY2;
+      ball2.style.background = rgbArray[Math.floor(Math.random() * rgbArray.length)]
+    }    
+  }
+  setInterval(moveBchaos, 22);
+  setInterval(moveBchaos2, 22);
 
+  //working code - changing color, size and diagonal direction on edge collision
+  // function moveB() {
+  //   if (reverse) {
+  //     positionX = positionX - velocityX;
+  //     positionY = positionY - velocityY;
+  //     ball.style.left = positionX + "px";
+  //     ball.style.top = positionY + "px";
+  //     ball.style.width = "60px";
 
+  //   } else {
+  //     positionX = positionX + velocityX;
+  //     positionY = positionY + velocityY;
+  //     ball.style.left = positionX + "px";
+  //     ball.style.top = positionY + "px";
+  //     ball.style.width = "50px";
+  //   }
 
-  setInterval(moveB, 10);
-  setInterval(moveB2, 200);
+  //   if (
+  //     positionX > Xmax ||
+  //     positionX === Xmin ||
+  //     positionY > Ymax ||
+  //     positionY === Ymin
+  //   ) {
+  //     reverse = !reverse;
+  //     ball.style.background = rgbArray[Math.floor(Math.random() * rgbArray.length)]
+  //   }
+  // }
+
+  // function moveB2() {
+  //   if (reverse) {
+  //     positionX = positionX - velocityX;
+  //     positionY = positionY - velocityY;
+  //     ball2.style.left = positionX + "px";
+  //     ball2.style.top = positionY + "px";
+  //     ball2.style.width = "40px";
+  //   } else {
+  //     positionX = positionX + velocityX;
+  //     positionY = positionY + velocityY;
+  //     ball2.style.left = positionX + "px";
+  //     ball2.style.top = positionY + "px";
+  //     ball2.style.width = "50px";
+  //   }
+
+  //   if (
+  //     positionX > Xmax ||
+  //     positionX === Xmin ||
+  //     positionY > Ymax ||
+  //     positionY === Ymin
+  //   ){
+  //     reverse = !reverse;
+  //     ball2.style.background = rgbArray[Math.floor(Math.random() * rgbArray.length)]
+  //   }
+  // }
+
+  // setInterval(moveB, 10);
+  // setInterval(moveB2, 200);
 </script>
