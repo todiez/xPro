@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<script>
+
+//Instructions 
+//Given an array of strings, words, return a string that has all the words concatenated together
+// - spaces are needed in between words
+//
+//ex. ['how', 'are', 'you'] -> 'how are you'
+
+function wordsToSentence(words) {
+    let concatenatedString = "";
+    for(let i = 0; i < words.length; i++) {
+        concatenatedString = concatenatedString + words[i] + " ";
+    }
+    concatenatedString = concatenatedString.trim();
+    return concatenatedString;
+}
+
+//console log results
+console.log('results:', wordsToSentence(['hey', 'there', 'boy']));
+
+
+//don't change this line
+if (typeof module !== 'undefined') {
+  module.exports = {
+    wordsToSentence,
+  };
+}
+
+
+</script>
