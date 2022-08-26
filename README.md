@@ -3,7 +3,7 @@
 This is my portfolio of all my released excercises on github to show the world my progress
 in becoming a full stack web developer. I'm doing the course at MIT xPro and it is called
 *Professional Certificate in Coding: Full Stack Development with MERN* 
-  ..
+  
 
 
 
