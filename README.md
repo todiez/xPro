@@ -6,9 +6,11 @@ in becoming a full stack web developer. I'm doing the course at MIT xPro and it 
 
 
 
+
 ## Installation
 
 There is no installation needed - everything is running in the browser. At least so far.
+
 
 
 ## Usage
@@ -16,9 +18,12 @@ There is no installation needed - everything is running in the browser. At least
 Just click on the links shown on main site. Nothing more.
 
 
+
 ## Support
 
 Feel free to contact me on tobias@diez.guru
+
+
 
 ## Roadmap
 
@@ -27,6 +32,7 @@ Depending on the learning schedule of the course but in general:
     - MongoDB
     - React
     - Node.js
+
 
 
 ## License
