@@ -21,6 +21,7 @@ Just click on the links shown on main site. Nothing more.
 Feel free to contact me on tobias@diez.guru
 
 ## Roadmap
+
 Depending on the learning schedule of the course but in general:
     - Java Script
     - MongoDB
@@ -29,4 +30,5 @@ Depending on the learning schedule of the course but in general:
 
 
 ## License
+
 Not applicable nor needed.
