@@ -22,20 +22,16 @@
             img.style.left = pos + 'px';
         }
         // Use setTimeout to call Run every 200 millesecs
-        let timeout = setTimeout(run, 200);
+        setTimeout(Run, 200);
     }
 
     function checkPageBounds(direction, imgWidth) {
-        //
         // Complete this to reverse direction on hitting page bounds
-        // 
-
+        
         if(pos < 0)
             direction = 0;
-        else if (pos > pageWidth - imgWidth)
+        else if (pos > window.innerWidth - imgWidth)
             direction = 1;
-
-  
         return direction;
     }
 </SCRIPT>

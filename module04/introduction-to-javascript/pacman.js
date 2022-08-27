@@ -33,7 +33,7 @@ function Run() {
   pageWidth = window.innerWidth;
 }
 
-setInterval(Run, 200, direction, focus);
+setInterval(Run, 200);
 
 // TODO: Add a Javascript setInterval() method that will call the Run() function above every 200 milliseconds. Note: in 
 //the video, Dr. Williams uses the setTimeout() method, but here we are going to use a slightly different
