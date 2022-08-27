@@ -29,6 +29,13 @@
         //
         // Complete this to reverse direction on hitting page bounds
         // 
+
+        if(pos < 0)
+            direction = 0;
+        else if (pos > pageWidth - imgWidth)
+            direction = 1;
+
+  
         return direction;
     }
 </SCRIPT>
