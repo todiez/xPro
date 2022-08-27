@@ -6,7 +6,6 @@ in becoming a full stack web developer. I'm doing the course at MIT xPro and it 
   
 
 
-
 ## Installation
 
 There is no installation needed - everything is running in the browser. At least so far.
