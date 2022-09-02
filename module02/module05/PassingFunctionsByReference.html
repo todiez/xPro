@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        f1 = function(x){
+            console.log(`f1:${x}`);
+        };
+        f1("guggug");
+        f1(42);
+
+        f2 = function(y){
+            console.log(`f1:${y}`);
+        };
+
+        function f3(fa, fb) {fa("hello"), fb("hello fB")};
+
+        f3(f1, f2);
+        
+    </script>
+</html>
