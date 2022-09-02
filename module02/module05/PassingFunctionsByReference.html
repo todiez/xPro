@@ -8,12 +8,17 @@
         f1(42);
 
         f2 = function(y){
-            console.log(`f1:${y}`);
+            console.log(`f2:${y}`);
         };
 
         function f3(fa, fb) {fa("hello"), fb("hello fB")};
 
         f3(f1, f2);
-        
+
+        function f4(fa, fb) { return {fa:fa, fb:fb};};
+        result =  f4(f1, f2);
+
+        result.fa("hello wordl");
+        result.fb("hello earthy");
     </script>
 </html>
