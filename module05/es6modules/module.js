@@ -12,7 +12,8 @@ const f1 = function (s) {
 const f2 = function (s) {
   alert(s);
 };
-const hello = "<h1>hello </h1>";
+const hello = "<h1>hello n </h1>";
+
 export {
   hello,
   funcs,
