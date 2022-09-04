@@ -1,17 +1,90 @@
 <div id="container">
   <!-- populated by JS-->
 </div>
-<script src="./posts.js"></script>
+<script src="./boston.js"></script>
+
 <script>
-  function renderPosts(posts, container) {
-    const len = posts.length; // posts is an array
+
+  function renderBoston(boston, container) {
+    var people = boston.data;
+    const len = boston.data.length; // boston.data is an array
     var html = '';
     for (let i = 0; i < len; i++) {
       html += '<li class="post">' +
-        '<h2>' + posts[i].title + '</h2>' +
-        '<h3>' + posts[i].content + '</h3>'
-    }
-    container.innerHTML = '<ul id = "posts">' + html + '</ul>';
+        '<h2>' + people[i][8] + '</h2>' +
+        '<h3>' + people[i][11] + '</h3>';
+    }    
+    
+    container.innerHTML = '<ul id = "boston">' + html + '</ul>';
   }
-  renderPosts(posts, document.getElementById('container'));
+
+  function renderTopSalaries(boston, container) {
+  var people = boston.data;
+      
+  people.sort(function(a, b){
+    return b[11] - a[11]
+  });
+
+  var topSalaries = people.slice(0, 5);
+  var html = '';
+  for (let i = 0; i < topSalaries.length; i++) {
+    html +=
+      '<li class="top">' + 
+      '<h2>' + topSalaries[i][8] + '</h2>' +
+      '<h3>' + topSalaries[i][11] + '</h3>';
+  }
+
+  container.innerHTML = '<ul id = "topSalaries">' + html + '</ul>';
+}
+
+  function renderTopEmployees(boston, container) {
+    //step 2 solution
+    var people = boston.data;
+    var topEmployees = people.filter((a) => a[11] > 200000);
+    var html = '';
+    for (let i = 0; i < topEmployees.length; i++) {
+      html +=
+        '<li class="top">' +
+        '<h2>' +
+        topEmployees[i][8] +
+        '</h2>' +
+        '<h3>' +
+        topEmployees[i][11] +
+        '</h3>';
+    }
+
+    container.innerHTML += '<ul id = "topEmployees">' + html + '</ul>';
+  }
+
+  function renderSalariesOwnSolution(boston, container) {
+    var person = boston.data;
+    console.log(person[0][8] + " earns " + person[0][11] + " per year!");
+    var salaryArray = []; //creating helping array
+    var salary = 0;
+
+    for (let i = 0; i < person.length; i++) {
+
+      if (person[i][11] > salary) {
+        salary = person[i][11];
+        salaryArray.unshift(person[i]); //pushing found solutions into help array
+      }
+    };
+    
+    var html = '';
+    for (let i = 0; i < salaryArray.slice(0, 5).length; i++) { 
+    //displaying the helping array sliced to 5 pieces as html on the site
+    html +=
+      '<li class="top">' + 
+      '<h2>' + salaryArray[i][8] + '</h2>' +
+      '<h3>' + salaryArray[i][11] + '</h3>';
+    }
+    container.innerHTML = '<ul id = "ownSalarySolution">' + html + '</ul>';
+
+  }
+  //renderBoston(boston, document.getElementById('container'));
+  renderTopSalaries(boston, document.getElementById('container'));
+  renderTopEmployees(boston, document.getElementById('container'));
+  //renderSalariesOwnSolution(boston, document.getElementById('container'));
+
+
 </script>
