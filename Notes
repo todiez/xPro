@@ -1,1 +1,3 @@
 keyword "this" will always refer to the item in which is within
+
+JS runs code sequentially, callback functions are a proper solution to enhance the sequence
