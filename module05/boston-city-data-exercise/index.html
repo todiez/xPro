@@ -11,7 +11,7 @@
     var html = '';
     for (let i = 0; i < len; i++) {
       html += '<li class="post">' +
-        '<h2>' + people[i][8] + '</h2>' +
+        '<h2>' + people[i][0] + ". " + people[i][8] + '</h2>' +
         '<h3>' + people[i][11] + '</h3>';
     }    
     
@@ -62,14 +62,15 @@
     var salaryArray = []; //creating helping array
     var salary = 0;
 
-    for (let i = 0; i < person.length; i++) {
-
-      if (person[i][11] > salary) {
-        salary = person[i][11];
-        salaryArray.unshift(person[i]); //pushing found solutions into help array
-      }
-    };
     
+      for (let j = 0; j < person.length; j++) {
+        if (person[j][11] > salary) {
+          salary = person[j][11];
+          salaryArray.unshift(person[j]); //pushing found solutions into help array
+        }
+      
+    };
+        
     var html = '';
     for (let i = 0; i < salaryArray.slice(0, 5).length; i++) { 
     //displaying the helping array sliced to 5 pieces as html on the site
@@ -77,13 +78,14 @@
       '<li class="top">' + 
       '<h2>' + salaryArray[i][8] + '</h2>' +
       '<h3>' + salaryArray[i][11] + '</h3>';
+
     }
     container.innerHTML = '<ul id = "ownSalarySolution">' + html + '</ul>';
 
   }
   //renderBoston(boston, document.getElementById('container'));
   renderTopSalaries(boston, document.getElementById('container'));
-  renderTopEmployees(boston, document.getElementById('container'));
+  //renderTopEmployees(boston, document.getElementById('container'));
   //renderSalariesOwnSolution(boston, document.getElementById('container'));
 
 
