@@ -34,6 +34,17 @@
 
         // dog("paz", 5, "stray");
 
+        // Application example for callback functions
+        let dogs = ["paz", "sultana", "abby", "luna", "dog5"];
+        let cats = ["Knopf", "Frieder", "Felix", "James"];
+
+        var consoleInfo = (name, i) => {
+            console.log("The name at index " + i + " is " + name);
+        }
+
+        dogs.forEach(consoleInfo);
+        cats.forEach(consoleInfo);
+
     </script>
 </body>
 </html>
