@@ -11,15 +11,27 @@
 
     <script>
         function bankBalance(accountBalance, cb){
-            cb(accountBalance)
+            console.log(cb);
+            x = cb(accountBalance);
+            return x;
         }
 
-        function addMoney(accountBalance){
-            balance = accountBalance + 100;
-            console.log(balance);
+        function addMoney(acBalance){
+            return balance = acBalance + 1500;
         }
 
-        bankBalance(90, addMoney)
+        y = bankBalance(90, addMoney)
+
+        console.log(y);
+
+
+        // function dog(name, age, breed) {
+        //     console.log(name);
+        //     console.log(age);
+        //     console.log(breed);
+        // }
+
+        // dog("paz", 5, "stray");
 
     </script>
 </body>
