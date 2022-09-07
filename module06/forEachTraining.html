@@ -7,6 +7,27 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+
+        const employees = [
+            {name: "peter", salary: "100"},
+            {name: "bruce", salary: "200"},
+            {name: "paz", salary: "333"}
+        ];
+
+        let salaries = 0;
+
+        function add(item, counter, array) {
+            salaries += Number(item.salary);
+
+            console.log(item);
+        }
+
+        employees.forEach(add);
+        console.log(salaries);
+
+
+
+    </script>
 </body>
 </html>
