@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<script src="payments_2005_to_2010.js"></script>
+<script>
+
+let supplierSum = 0;
+
+function add(item){
+	// -----------------------------
+	//    YOUR CODE: write callback 
+	// -----------------------------
+
+
+	supplierSum += Number(item[9])
+
+	//console.log(supplierSum);
+}
+
+chicago.data.forEach(add);
+
+console.log(supplierSum);
+
+</script>
+</html>
