@@ -9,30 +9,40 @@
 
 <script>
 
-const graffiti = [];
-let matching;
-let obj;
+	const graffiti = [];
+	let matching;
+	let obj;
 
-function graffitiReports(zip) {
-	matching = chicago.data.filter(function(report){
-		// ---------------------------
-		//		YOUR CODE
-		// ---------------------------
-	});
+	function graffitiReports(zip) {
+		matching = chicago.data.filter(function(report){
+			// ---------------------------
+			//		YOUR CODE
+			// ---------------------------
 
-	obj = {};
-	obj.zip = zip;
-	obj.reports = matching.length;
-	graffiti.push(obj);
-}
+			//ZipCode[16] --> 17th element of a row
+			//zip[0];
+			return report[16] === zip;
+			
+		});
+		console.log(chicago.data[0][16]);
 
-zipCodes.forEach(graffitiReports);
+		obj = {};
+		obj.zip = zip;
+		obj.reports = matching.length;
 
-// graph graffiti reports data
-window.onload = function(){
-    const dataset = generateDataset(graffiti);	
-    drawChart(dataset);
-};
+		//console.log(obj);
+
+		graffiti.push(obj);
+	}
+
+	//console.log(zipCodes[0]);
+	zipCodes.forEach(graffitiReports);
+
+	// graph graffiti reports data
+	window.onload = function(){
+		const dataset = generateDataset(graffiti);	
+		drawChart(dataset);
+	};
 
 </script>
 </html>

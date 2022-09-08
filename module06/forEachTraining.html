@@ -61,8 +61,14 @@
             // }
 
             words.forEach(words => {
+                //console.log(words);
+                //console.log(paragraph);
                 paragraph += words + " ";
             });
+
+            words.forEach((words) => (paragraph += words + " "));
+            //           Array Übergeben + was damit machen!! und das für jedes Element
+
        
             return paragraph;
         }
