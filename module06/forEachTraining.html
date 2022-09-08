@@ -9,41 +9,66 @@
 <body>
     <script>
 
-        // const employees = [
-        //     {name: "peter", salary: "100"},
-        //     {name: "bruce", salary: "200"},
-        //     {name: "paz", salary: "333"}
-        // ];
+        // // const employees = [
+        // //     {name: "peter", salary: "100"},
+        // //     {name: "bruce", salary: "200"},
+        // //     {name: "paz", salary: "333"}
+        // // ];
 
-        // let salaries = 0;
+        // // let salaries = 0;
 
-        // function add(item, counter, array) {
-        //     salaries += Number(item.salary); //adding all the salaries together and converting the string to a number
-        //     //console.log(item);
+        // // function add(item, counter, array) {
+        // //     salaries += Number(item.salary); //adding all the salaries together and converting the string to a number
+        // //     //console.log(item);
+        // // }
+
+        // // employees.forEach(add); //iteration through all of the items in the employees array
+        // // console.log(salaries);
+
+
+        // let seasons = ["summer", "fall", "winter", "springel"];
+
+        // function printSeason(season) {
+        //     console.log(season);
         // }
 
-        // employees.forEach(add); //iteration through all of the items in the employees array
-        // console.log(salaries);
+        
+        // var blub = (function (test) {
+        //     printSeason(test);
+        // });
+
+        // //var x = (a) => printSeason(a);
+
+        // seasons.forEach(blub);
+        // //seasons.forEach(x);
+
+        
 
 
-        let seasons = ["summer", "fall", "winter", "springel"];
 
-        function printSeason(season) {
-            console.log(season);
+        // This is a list of words
+        
+        
+        
+        let words = ['Loops', 'are', 'a', 'great', 'way', 'to', 'find', 'elements', 'in', 'an', 'array'];
+
+        // TODO: implement this function to return a string containing all words in a paragraph.
+        function createParagraph(words) {
+            let paragraph = '';
+
+            // for (i = 0; i < words.length; i++) {
+            //     paragraph += words[i] + " ";
+            // }
+
+            words.forEach(words => {
+                paragraph += words + " ";
+            });
+       
+            return paragraph;
         }
 
-        
-        var blub = (function (test) {
-            printSeason(test);
-        });
-
-        //var x = (a) => printSeason(a);
-
-
-        seasons.forEach(blub);
-        //seasons.forEach(x);
-
-        
+        // Prints paragraph to console
+        console.log(createParagraph(words));
 
 
 
