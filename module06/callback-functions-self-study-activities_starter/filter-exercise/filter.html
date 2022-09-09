@@ -17,8 +17,15 @@ function isBigEnough(element) {
 const filtered = employees.filter(isBigEnough);
 
 
+const filtered2 = employees.filter(function(test) {
+  return test.salary >= 500000;
+
+});
+
 
 console.log(JSON.stringify(filtered));
+console.log(employees[0].salary)
+console.log(JSON.stringify(filtered2));
 
 </script>
 </html>
