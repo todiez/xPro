@@ -20,7 +20,7 @@
             });
 
             // order by salary
-            // points.sort(compare);
+            points.sort(compare);
 
             return points;
         };
@@ -30,6 +30,12 @@
             //  YOUR CODE
             // Uncomment line 23 once you have written the compare function
             // ----------------
+            
+            if (a.salary > b.salary) return 1;
+            if (a.salary < b.salary) return -1;
+            if (a.salary === b.salary) return 0;
+
+
         }
 
         window.onload = function run() {

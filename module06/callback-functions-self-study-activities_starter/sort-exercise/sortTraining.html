@@ -9,16 +9,23 @@
 <body>
     <script>
 
-        let numbers = [4, 2, 7, 5, 1, 12, 4, 2, 9, 8];
+        let numbers = [4, 2, 7, 5, 1, 12, 4, 2, 9, 8, 69];
 
-        function compare(a, b) {
+        // let comp = function compare(a, b) {
+        //     if (a > b) return 1;
+        //     if (a < b) return -1;
+        //     if (a === b) return 0;
+
+        // }
+
+        let comp = (a, b) => {
             if (a > b) return 1;
             if (a < b) return -1;
             if (a === b) return 0;
 
         }
 
-        numbers.sort(compare);
+        numbers.sort(comp);
 
 
         console.log(JSON.stringify(numbers));
