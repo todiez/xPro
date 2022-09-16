@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaction</title>
+</head>
+<body>
+    <h1 id="heading">Hello Mover!</h1>
+
+    <script src ="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+    <script>
+
+        let leftOffset = 50;
+        let moveHeading = () => { $("#heading").offset({left: leftOffset});
+
+            leftOffset++;
+
+            if(leftOffset > 200) {
+                leftOffset = 50;
+            }
+        };
+
+        setInterval(moveHeading, 10);
+
+
+    </script>
+    
+</body>
+</html>
