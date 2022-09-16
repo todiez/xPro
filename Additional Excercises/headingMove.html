@@ -1,32 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interaction</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1 id="heading">Hello Mover!</h1>
 
-    <script src ="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
 
     <script>
+      let leftOffset = 0;
+      let topOffset = 0;
+      
+      let moveHeading = () => {
+        $("#heading").offset({
+          left: leftOffset,
+          top: topOffset,
+        });
 
-        let leftOffset = 50;
-        let moveHeading = () => { $("#heading").offset({left: leftOffset});
+        if (leftOffset < 200 && topOffset === 0) {
+          leftOffset++;
+        }
+        if (leftOffset === 200 && topOffset < 200) {
+          topOffset++;
+        }
+        if (topOffset === 200 && leftOffset > 0) {
+          leftOffset--;
+        }
+        if (topOffset > 0 && leftOffset === 0) {
+          topOffset--;
+        }
+      };
 
-            leftOffset++;
+      let cancelInterval = setInterval(moveHeading, 200);
+      let counter = 0;
 
-            if(leftOffset > 200) {
-                leftOffset = 50;
-            }
-        };
+      let clickHandler = (event) => {
+        console.log("Click! " + event.pageX + " " + event.pageY);
+        
+        let cancelInt2 = setInterval(moveHeading, 20);
 
-        setInterval(moveHeading, 10);
+        counter++;
+        console.log("counter: " + counter);
+        if (counter > 5) {
+            clearInterval(cancelInterval);
+            clearInterval(cancelInt2);
+        }
+        
+      };
 
+      $("html").click(clickHandler);
 
+      
     </script>
-    
-</body>
+  </body>
 </html>
