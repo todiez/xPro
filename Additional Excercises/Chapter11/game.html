@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Hunt</title>
+</head>
+<body>
+
+    <h1 id="heading">Find the buried treasure!</h1>
+
+
+    <img id="map" width=900 height=900 
+        src="http://nostarch.com/images/treasuremap.png">
+
+    <p>Hint:</p>
+    <p id="distance"></p>
+    <br>
+    <br>
+    <p>Remaining clicks:</p>
+    <p id="remainingClicks">30</p>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    
+    <script>
+    // Game code goes here
+        let getRandomNumber = (size) => {
+            return Math.floor(Math.random() * size);
+        }
+
+        let clickCounter = 0;
+        let width = 900;
+        let height = 900;
+
+        //creating target as an object or key/value pair
+        let treasureCoordinates = {
+            x: getRandomNumber(width),
+            y: getRandomNumber(height)
+        };
+
+        //Click Handler
+        $("#map").click(
+            (clickEvent) => {
+                clickCounter++;
+
+                let distance = getDistance(clickEvent, treasureCoordinates);
+                let distanceHint = getDistanceHint(distance);
+                $("#distance").text(distanceHint);
+                $("#remainingClicks").text( 30 - clickCounter);
+
+                if (distance < 12) {
+                    alert("You found it! It just took " + clickCounter + " clicks!");
+                }
+
+                if (distance > 500) {
+                    alert("Hell no! Fucking Cold!");
+                }
+
+                if (distance > 500 && clickCounter > 20) {
+                    alert("Hell no! Still fucking Cold! And apparantly you are not learning anything :/");
+                }
+
+                if (clickCounter > 30) {
+                    alert("GAME OVER!");
+                }
+            }
+        );
+
+        let getDistance = (event, target) => {
+            let diffX = event.offsetX - target.x;
+            let diffY =  event.offsetY - target.y;
+
+            return Math.sqrt((diffX * diffX) + (diffY * diffY));
+        };
+        
+        let getDistanceHint = (distance) => {
+            if (distance < 10) {
+                return "Boiling hot!";
+            } else if (distance < 30) {
+                return "Really hot";
+            } else if (distance < 60) {
+                return "Hot";
+            } else if (distance < 120) {
+                return "Warm";
+            } else if (distance < 220) {
+                return "Cold";
+            } else if (distance < 360) {
+                return "Really cold";
+            } else {
+                return "Freezing!";
+            }
+        };
+
+    </script>
+    
+</body>
+</html>
