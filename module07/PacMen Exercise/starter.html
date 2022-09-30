@@ -67,16 +67,22 @@
 
     function makeOne() {
         pacMen.push(makePac());
-        pacMen.push(makePac());
-        pacMen.push(makePac());
-        pacMen.push(makePac());
+
     }
+    function stopOne() {
+
+        pacMen.pop();
+        game.removeChild(newimg);
+
+    }
+
 </SCRIPT>
 
 <body>
     <div id='game'>
         <button onclick='makeOne()' width='200' height='30'>Add PacMan's</button>
         <button onclick='update()' width='200' height='30'>Start Game</button>
+        <button onclick='stopOne()' width='200' height='30'>Stop PacMan</button>
 
     </div>
 </body>
