@@ -4,17 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alien leave</title>
 </head>
+
+
+<script>
+    window.onload = () => {
+        const tag = document.getElementById("tag1");
+        let time = 30;
+
+        const getTime = () => {
+            time -= 1;
+            tag.innerHTML = "Goodbye and your ship leaves in " + time + " seconds!";
+        }
+        setInterval(getTime, 1000);
+    }
+    
+</script>
+
 <body>
     <h1 id="tag1">Hello my Dear!</h1>
     
 </body>
 
-<script>
-    const tag = document.getElementById("tag1");
-    tag.innerHTML = "Goodbye and so :/ "
-    
-</script>
+
 
 </html>
