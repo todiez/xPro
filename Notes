@@ -2,4 +2,4 @@ keyword "this" will always refer to the item in which is within
 
 JS runs code sequentially, callback functions are a proper solution to enhance the sequence
 
-ssh-add ~/.ssh/id_ed25519
+ssh-add ~/.ssh/key
