@@ -129,22 +129,18 @@
     </main>
     <script>
       let i = 0;
-      let y = 0
+      
         
 
       function move() {
-
                 
         const element = document.getElementById("n" +  (1 + i));
         element.classList.add("on");
-        const element2 = document.getElementById("n" + y);
-        element2.classList.add("off");
-                   
-        
         setTimeout(move, 200);
+
         
         i++;
-        y++;
+        
       }
       
     </script>
