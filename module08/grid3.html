@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <style>
+    body {
+      margin: 40px;
+    }
+
+    .sidebar {
+      /* TODO: Define the grid area here */
+      grid-area: sidebar;
+    }
+
+    .content {
+      /* TODO: Define the grid area here */
+      grid-area: content;
+    }
+    .header {
+      grid-area: header;
+    }
+
+    .footer {
+      /* TODO: Define the grid area here */
+      grid-area: footer;
+    }
+
+    .wrapper {
+      display: grid;
+      grid-gap: 10px;
+      background-color: #fff;
+      color: #444;
+
+      /* TODO: Define the grid-template-columns and grid-template-areas values here. */
+      grid-template-columns: 120px 120px 120px;
+      grid-template-areas:
+        ". header header"
+        "sidebar content content"
+        "footer  footer  footer";
+    }
+
+    .box {
+      background-color: #0000ff;
+      color: #fff;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 150%;
+    }
+
+    .header,
+    .footer {
+      background-color: #999;
+    }
+  </style>
+
+  <body id="main">
+    <div class="wrapper">
+      <div class="box header">Header</div>
+      <div class="box sidebar">Sidebar</div>
+      <div class="box content">
+        Content <br />
+        This is the main area for content
+      </div>
+      <div class="box footer">Footer</div>
+    </div>
+  </body>
+</html>
