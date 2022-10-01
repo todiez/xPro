@@ -5,7 +5,11 @@
     <style>
       .on {
         background: orange;
-        font-size: 3em;;
+        font-size: 3em;
+      }
+      .on2 {
+        background: skyblue;
+        font-size: 3em;
       }
       .next {
         background-color: khaki;
@@ -25,6 +29,12 @@
     <button onclick="on()">ON</button>
     <button onclick="offButton()">Forever OFF</button>
     <div id="target">Target</div>
+    <br />
+    <br />
+    <button onclick="toggle()">Toggle</button>
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
+    <div id="target2">Target</div>
 
     <script>
       function on() {
@@ -40,7 +50,7 @@
 
       function next() {
         const element = document.getElementById("target");
-        
+
         element.classList.add("next");
       }
 
@@ -48,17 +58,30 @@
         on();
         setTimeout(next, 1000);
         setTimeout(off, 2000);
-        
       }
 
       const myInterval = setInterval(automation, 3000);
-      
+
       function offButton() {
         clearInterval(myInterval);
         off();
       }
 
-
+      function toggle() {
+        const element = document.getElementById("target2");
+        element.classList.toggle("on2");
+      }
+      let timer = null;
+      function start() {
+        timer = setTimeout(() => {
+          toggle();
+          console.log("It's me, your friendly timer!");
+          start();
+        }, 1000);
+      }
+      function stop() {
+        clearTimeout(timer);
+      }
     </script>
   </body>
 </html>
