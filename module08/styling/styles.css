@@ -3,3 +3,14 @@ h1 {
     color: rebeccapurple;
     margin-top: 0;
   }
+
+  .blueItems {
+    font-size: 3em;
+    color: blue;
+    
+  }
+  .redItems {
+    font-size: 4em;
+    color: red;
+    
+  }
