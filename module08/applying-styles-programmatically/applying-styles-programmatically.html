@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dynamic</title>
+    <style>
+      .on {
+        background: orange;
+        font-size: 4em;;
+      }
+      .next {
+        background-color: silver;
+        font-size: 3em;
+      }
+      div {
+        padding: 70px;
+        text-align: center;
+        border-style: solid;
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="off()">OFF</button>
+    <button onclick="next()">NEXT</button>
+    <button onclick="on()">ON</button>
+    <div id="target">Target</div>
+
+    <script>
+      function on() {
+        const element = document.getElementById("target");
+        element.classList.add("on");
+      }
+
+      const off = () => {
+        const element = document.getElementById("target");
+        element.classList.remove("on");
+        element.classList.remove("next");
+      };
+
+      function next() {
+        const element = document.getElementById("target");
+        element.classList.add("next");
+      }
+
+
+    </script>
+  </body>
+</html>
