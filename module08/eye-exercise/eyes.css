@@ -31,3 +31,16 @@ body {
   transform: translate(-50%, -50%);
   border-radius: 50%;
 }
+
+.eye-red {
+  width: 240px;
+  height: 120px;
+  background: rgb(107, 32, 32);
+  display: inline-block;
+  margin: 40px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+

@@ -3,14 +3,17 @@
   <link rel="stylesheet" href="./eyes.css" />
   <body>
     <div class="eyes">
-      <div class="eye">
+      <div class="eye" id="eye1">
         <div class="ball"></div>
       </div>
-      <div class="eye">
+      <div class="eye" id="eye2">
         <div class="ball"></div>
       </div>
     </div>
+    <button onclick="makeEyesRed()">Red Eyes</button>  
+    <button onclick="makeEyesNormal()">Normal Eyes</button>  
   </body>
+
   <script>
     var balls = document.getElementsByClassName("ball");
     document.onmousemove = () => {
@@ -23,5 +26,17 @@
         balls[i].transfoorm = "translate(-" + x + ",-" + y + ")";
       }
     };
+
+    function makeEyesRed() {
+      document.getElementById("eye1").className = "eye-red";
+      document.getElementById("eye2").className = "eye-red";           
+    }
+
+    function makeEyesNormal() {
+      document.getElementById("eye1").className = "eye";
+      document.getElementById("eye2").className = "eye";           
+    }
+
+
   </script>
 </html>

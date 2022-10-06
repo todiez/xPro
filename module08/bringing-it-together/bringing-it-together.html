@@ -24,8 +24,38 @@
     <button onclick="createGrid()">CREATE GRID</button>    
     <button onclick="move()" style="margin-bottom: 10px;">MOVE</button>
     <main class="content" id="target">
+
+
     </main>
     <script>
+
+        let i = 1;
+        const gridSize = 100;
+
+        function createGrid() {
+            for (let j = 1; j <= gridSize; j++) {
+                var div = document.createElement("div");
+                div.id = 'n' + j;
+                div.innerText = j;
+                document.getElementById("target").appendChild(div);
+            }
+
+        }
+        function move() {        
+        setTimeout( () => {
+            if (i > 100) return;
+            toggle(i);
+            toggle(i-1);
+            i++;
+            move();
+        }, 100);
+      }
+      function toggle(i) {
+        if (i < 1) return 0;
+        const name = 'n' + i;
+        const element = document.getElementById(name);
+        element.classList.toggle('on');
+      }
     </script>
 </body>
 </html>

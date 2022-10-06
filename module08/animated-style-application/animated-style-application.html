@@ -6,10 +6,7 @@
       .on {
         background: orange;
       }
-      .off {
-        background: blue;
-      }
-      .content {
+     .content {
         display: grid;
         grid-template-columns: repeat(10, 1fr);
         grid-template-rows: repeat(10, 1fr);
@@ -128,19 +125,21 @@
       <div id="n100">100</div>
     </main>
     <script>
-      let i = 0;
-      
-        
-
-      function move() {
-                
-        const element = document.getElementById("n" +  (1 + i));
-        element.classList.add("on");
-        setTimeout(move, 200);
-
-        
-        i++;
-        
+      let i = 1;
+      function move() {        
+        setTimeout( () => {
+            if (i > 100) return;
+            toggle(i);
+            toggle(i-1);
+            i++;
+            move();
+        }, 100);
+      }
+      function toggle(i) {
+        if (i < 1) return 0;
+        const name = 'n' + i;
+        const element = document.getElementById(name);
+        element.classList.toggle('on');
       }
       
     </script>
