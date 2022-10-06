@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async Testing 3</title>
+  </head>
+  <body>
+    <script>
+     
+    //  (async function() {
+
+    //     let url = 'https://fonts.googleapis.com';
+    //     const response = await fetch(url); //makes connection
+    //     const data = await response.text(); //waits for text within the page
+    //     console.log(data);
+    //     console.log("if it not works, the server doesn't allow CORS");
+    //  })();
+
+
+     var urls = [];
+     urls.push('http://student.mit.edu/catalog/m1a.html');
+     urls.push('http://student.mit.edu/catalog/m2a.html');
+     urls.push('http://student.mit.edu/catalog/m3a.html');
+     urls.push('http://student.mit.edu/catalog/m4a.html');
+     urls.push('http://student.mit.edu/catalog/m5a.html');
+     urls.push('http://student.mit.edu/catalog/m6a.html');
+
+     //var fetch = require('node-fetch');
+
+     var makeRequest = async function (url, counter) {
+
+        const response = await fetch(url);
+        const data = await response.text();
+        return 'Done: ' + counter;
+    }
+
+     urls.forEach(function(url,i){
+        makeRequest(url, i).then(function(result){
+            console.log(result);
+        })
+     })
+
+    </script>
+  </body>
+</html>

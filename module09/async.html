@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async Testing</title>
+  </head>
+  <body>
+    <script>
+      function a() {
+        return new Promise(function (resolve) {
+            setTimeout(() => {
+              resolve('a')
+            }, 3000);
+        })
+
+      }
+      function b() {
+        return new Promise(function (resolve) {
+            setTimeout(() => {
+              resolve('b')
+            }, 500);
+        })
+      }
+      function c() {
+        return new Promise(function (resolve) {
+            setTimeout(() => {
+              resolve('c')
+            }, 1500);
+        })
+      }
+
+      const list = [a, b, c];
+
+      (async function() {
+        for (fn of list) {
+        const result = await fn();
+        console.log(result);
+        }
+      })()
+
+      // function resolveAfter2Seconds() {
+      //   return new Promise(resolve => {
+      //     setTimeout(() => {
+      //       resolve('aus');
+      //     }, 2000);
+      //   });
+      // }
+
+
+
+      // async function asyncCall() {
+      //   console.log("calling");
+      //   const result = await resolveAfter2Seconds();
+      //   console.log(result);
+      // }
+
+      // asyncCall();
+    </script>
+  </body>
+</html>
