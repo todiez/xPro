@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Real Time Bus Tracker</title>
-
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
     <link
@@ -13,11 +12,18 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
-</head>
-<body>
-    <div id="map"></div>
-    <script src="mapanimation.js"></script>
-
+  </head>
+  <body>
     
-</body>
+    <div id="map"></div>
+    <h1>Real Time Bus Tracker</h1>
+    <button onclick="run1()">Start Tracking Route 1</button>  
+    <span id="span1"></span>
+    
+    <button onclick="run11()">Start Tracking Route 11</button>  
+    <span id="span11"></span>
+
+    <script src="mapanimation.js"></script>
+    
+  </body>
 </html>

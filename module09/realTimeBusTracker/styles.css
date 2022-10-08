@@ -5,9 +5,10 @@ body {
 
   #map {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 8%;
+    bottom: 0px;
     width: 100%;
+   
   }
 
   .map-overlay {
