@@ -109,8 +109,7 @@ async function run() {
   const spanAll = document.getElementById('span-all');
   spanAll.innerHTML = "   Currently are " + counter + " Green Line C vehicles in operation    "
   
- 
-  // timer
+   // timer
   setTimeout(run, 15000);
 }
 
