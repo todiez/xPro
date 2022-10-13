@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     
+
+       function permute(stringArray) {
+            
+            if (stringArray.length === 1) return stringArray;
+
+            let pic = "";
+            let permutations = [];
+
+            for (let i = 0; i < stringArray.length; i++) {
+
+                pic = stringArray[i];
+                let slicedArray = stringArray.slice(0,i) + stringArray.slice(i+1, stringArray.length); 
+
+                for (var perm of permute(slicedArray)){
+                    permutations.push(pic + perm);
+                    //console.log(permutations);
+                }
+            }
+            return permutations;
+        };
+
+        const stringArray = "abcd";
+        console.log(JSON.stringify(permute(stringArray)));
+        
+
+
+
+        /*
+        abc
+        acb
+
+        bac
+        bca
+           
+
+        cab
+        cba
+
+        */
+
+    </script>    
+</body>
+</html>
