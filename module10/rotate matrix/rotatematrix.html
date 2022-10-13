@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rotate it!</title>
+  </head>
+
+  <!-- <script src="./rotateMatrix.js"></script> -->
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      grid-template-rows: repeat(3, 60px);
+      grid-gap: 10px;
+      margin-top: 10px;
+    }
+    .box {
+      background-color: #444;
+      color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      font-size: 150%;
+    }
+  </style>
+
+  <button onclick="transpose(A)">Transpose Matrix</button>
+  <button onclick="exchangeCols(A)">Swap Columns</button>
+  <button onclick="updateGrid(A)">Update Graphics</button>
+
+  <div id="grid" class="grid">
+    <div class="box 1">1</div>
+    <div class="box 2">2</div>
+    <div class="box 3">3</div>
+    <div class="box 4">4</div>
+    <div class="box 5">5</div>
+    <div class="box 6">6</div>
+    <div class="box 7">7</div>
+    <div class="box 8">8</div>
+    <div class="box 9">9</div>
+  </div>
+
+  <script>
+    const A = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ];
+
+    const arrayLen = A.length;
+    const tagArray = [];
+    let tag = document.getElementsByClassName("box");
+    let divLen = tag.length;
+
+    for (let i = 0; i < divLen; i++) {
+      tagArray[i] = tag.item(i); //get handle on all div tags
+    }
+
+    console.log(JSON.stringify(tag));
+
+    function toij(k) {
+      i = k % 3;
+      j = Math.floor(k / 3);
+      return { i, j };
+    }
+
+    function updateGrid(A) {
+      tagArray.forEach((item, index) => {
+        let change = toij(index);
+        item.innerText = A[change.j][change.i];
+      });
+    }
+
+    function transpose(A) {
+      // we need only swap upper triangle with lower
+      let N = A.length;
+      for (let i = 0; i < N - 1; i++) {
+        for (let j = i + 1; j < N; j++) {
+          swap(A, i, j, j, i);
+        }
+      }
+    }
+    function swap(A, i, j, k, l) {
+      let temp = A[j][i];
+      A[j][i] = A[l][k];
+      A[l][k] = temp;
+    }
+    function exchangeCols(A) {
+      // work in from outside
+      let N = A.length; // we need only swap N/2 (rounded down)
+      let n = Math.floor(N / 2); // round down to integer
+      for (let col = 0; col < n; col++) {
+        for (let row = 0; row < N; row++) {
+          swap(A, col, row, N - 1 - col, row);
+        }
+      }
+    }
+  </script>
+</html>
+
+
