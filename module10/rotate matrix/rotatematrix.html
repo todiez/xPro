@@ -48,6 +48,10 @@
       [7, 8, 9],
     ];
 
+    //rotation can be done either by copying all the pixel and store them
+    // into an array or
+    // we transpose the matrix and swap the columns ---> faster and less storage needed
+
     const arrayLen = A.length;
     const tagArray = [];
     let tag = document.getElementsByClassName("box");
