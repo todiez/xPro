@@ -16,7 +16,7 @@
     }
     // Factory to make a PacMan at a random position with random velocity
     function makePac() {
-        // returns an object with random values scaled {x: 33, y: 21}
+        // returns an object with random values scaled 
         let velocity = setToRandom(10); // {x:?, y:?}
         let position = setToRandom(200);
         // Add image to div id = game
@@ -72,7 +72,7 @@
     function stopOne() {
 
         pacMen.pop();
-        game.removeChild(newimg);
+        //game.removeChild(newimg);
 
     }
 
@@ -82,7 +82,7 @@
     <div id='game'>
         <button onclick='makeOne()' width='200' height='30'>Add PacMan's</button>
         <button onclick='update()' width='200' height='30'>Start Game</button>
-        <button onclick='stopOne()' width='200' height='30'>Stop PacMan</button>
+        <button onclick='stopOne()' width='200' height='30'>Stop last added PacMan</button>
 
     </div>
 </body>
