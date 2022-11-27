@@ -8,7 +8,7 @@ function NavBar({ stockitems }) {
   const [stock, setStock] = React.useState(stockitems);
   const { Button } = ReactBootstrap;
   // event apple:2
-  const moveToCart = e => {
+  const moveToCart = (e) => {
     let [name, num] = e.target.innerHTML.split(":"); // innerHTML should be format name:3
     // use newStock = stock.map to find "name" and decrease number in stock by 1
     // only if instock is >=  do we move item to Cart and update stock
@@ -38,9 +38,10 @@ const menuItems = [
   { name: "pineapple", instock: 3 },
   { name: "pear", instock: 0 },
   { name: "peach", instock: 3 },
-  { name: "orange", instock: 1 }
+  { name: "orange", instock: 1 },
 ];
 ReactDOM.render(
   <NavBar stockitems={menuItems} />,
   document.getElementById("root")
 );
+

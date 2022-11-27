@@ -4,4 +4,4 @@ const updatedNums = numbers.map((number, index) => {
   return <li key={index.toString()}>{number}</li>;
 });
 
-ReactDOM.render(<ul>{updatedNums}</ul>, document.getElementById("root"));
+ReactDOM.render(<ul>{updatedNums}</ul>, document.getElementById("root2"));

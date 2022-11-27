@@ -5,7 +5,7 @@ function Todo({todo, index, remove}) {
   }
    
     return (
-        <div className="todo" onClick={handle}>{todo.text} (-)</div>
+        <div className="todo" onClick={handle}>{todo.text}</div>
     );
   }
   

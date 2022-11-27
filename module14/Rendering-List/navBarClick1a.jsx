@@ -20,4 +20,5 @@ const menuItems = [1, 2, 3, 4, 5];
 ReactDOM.render(
   <NavBar menuitems={menuItems} />,
   document.getElementById("root")
-);
+
+  );

@@ -19,8 +19,8 @@ function App() {
     },
   ]);
 
-  const addTodo = (text) => {
-    const newTodos = [...todos, { text: text, isDone: false }]; //create new array with old array plus entered object
+  const addTodo = (inputString) => {
+    const newTodos = [...todos, { text: inputString, isDone: false }]; //create new array with old array plus entered object
     setTodos(newTodos); // use state to update todos list
     return todos;
   };
@@ -29,6 +29,10 @@ function App() {
   const removeTodo = (index) => {
     let temp = [...todos];
     temp.splice(index, 1);
+
+    // temp[index].text = temp[index].text +  " ---> DONE";
+
+    
     setTodos(temp);
   };
 
