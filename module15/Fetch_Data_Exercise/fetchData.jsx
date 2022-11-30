@@ -30,6 +30,7 @@ function App() {
         onClick={() => setUrl("http://localhost:8080/data.json")}
       >
         Search
+        
       </button>
 
       {isLoading ? (
