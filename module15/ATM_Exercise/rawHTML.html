@@ -6,9 +6,10 @@
     <h2 id="total">Account Balance $Zero</h2>
 </label>
 <script>
-    let transactionState = 0;
-    let totalState = 0;
+    let transactionState = 0;   //state of this transaction
+    let totalState = 0;         //account total at bank    
     let status = "Account Balance $zero";
+
     const handleChange = value => {
         console.log(`handleChange ${value}`);
         transactionState = Number(value);
