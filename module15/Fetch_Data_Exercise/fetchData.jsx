@@ -1,40 +1,112 @@
-function App() {
-  const { useState, useEffect } = React;
-  const { Container } = ReactBootstrap;
-  const [data, setData] = useState({ hits: [] });
-  const [url, setUrl] = useState("http://localhost:8080/data.json");
-  const [isLoading, setIsLoading] = useState(false);
-  const [query, setQuery] = useState("");
+const Pagination = ({ items, pageSize, onPageChange }) => {
+  const { Button } = ReactBootstrap;
+  if (items.length <= 1) return null;
+
+  let num = Math.ceil(items.length / pageSize);
+  let pages = range(1, num + 1);
+  const list = pages.map((page) => {
+    return (
+      <Button key={page} onClick={onPageChange} className="page-item">
+        {page}
+      </Button>
+    );
+  });
+  return (
+    <nav>
+      <ul className="pagination">{list}</ul>
+    </nav>
+  );
+};
+
+const useDataApi = (initialUrl, initialData) => {
+  const { useState, useEffect, useReducer } = React;
+  const [url, setUrl] = useState(initialUrl);
+
+  const [state, dispatch] = useReducer(dataFetchReducer, {
+    isLoading: false,
+    isError: false,
+    data: initialData,
+  });
 
   useEffect(() => {
-    console.log("Fetching data...");
+    let didCancel = false;
     const fetchData = async () => {
-      setIsLoading(true);
-      const result = await axios(url);
-      setData(result.data);
-      setIsLoading(false);
+      dispatch({ type: "FETCH_INIT" });
+      try {
+        const result = await axios(url);
+        if (!didCancel) {
+          dispatch({ type: "FETCH_SUCCESS", payload: result.data });
+        }
+      } catch (error) {
+        if (!didCancel) {
+          dispatch({ type: "FETCH_FAILURE" });
+        }
+      }
     };
-
     fetchData();
-  }, []);
+    return () => {
+      didCancel = true;
+    };
+  }, [url]);
+  return [state, setUrl];
+};
+const dataFetchReducer = (state, action) => {
+  switch (action.type) {
+    case "FETCH_INIT":
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+      };
+    case "FETCH_SUCCESS":
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: action.payload,
+      };
+    case "FETCH_FAILURE":
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    default:
+      throw new Error();
+  }
+};
+
+function App() {
+  const { Fragment, useState, useEffect, useReducer } = React;
+  const [query, setQuery] = useState("MIT");
+  const [{ data, isLoading, isError }, doFetch] = useDataApi(
+    "https://hn.algolia.com/api/v1/search?query=MIT",
+    {
+      hits: [],
+    }
+  );
 
   return (
-    <Container>
-      <input
-        type="text"
-        value={query}
-        onChange={(event) => setQuery(event.target.value)}
-      />
-      <button
-        type="button"
-        onClick={() => setUrl("http://localhost:8080/data.json")}
+    <Fragment>
+      <form
+        onSubmit={(event) => {
+          doFetch(`http://hn.algolia.com/api/v1/search?query=${query}`);
+
+          event.preventDefault();
+        }}
       >
-        Search
-        
-      </button>
+        <input
+          type="text"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
+
+      {isError && <div>Something went wrong ...</div>}
 
       {isLoading ? (
-        <div>Loading...</div>
+        <div>Loading ...</div>
       ) : (
         <ul>
           {data.hits.map((item) => (
@@ -44,10 +116,14 @@ function App() {
           ))}
         </ul>
       )}
-    </Container>
+      <Pagination
+        items={data.hits}
+        pageSize={pageSize}
+        onPageChange={handlePageChange}
+      ></Pagination>
+    </Fragment>
   );
 }
+
 // ========================================
 ReactDOM.render(<App />, document.getElementById("root"));
-
-//  // "https://hn.algolia.com/api/v1/search?query=redux"
