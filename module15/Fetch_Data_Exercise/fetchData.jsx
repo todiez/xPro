@@ -17,7 +17,16 @@ const Pagination = ({ items, pageSize, onPageChange }) => {
     </nav>
   );
 };
-
+const range = (start, end) => {
+  return Array(end - start + 1)
+    .fill(0)
+    .map((item, i) => start + i);
+};
+function paginate(items, pageNumber, pageSize) {
+  const start = (pageNumber - 1) * pageSize;
+  let page = items.slice(start, start + pageSize);
+  return page;
+}
 const useDataApi = (initialUrl, initialData) => {
   const { useState, useEffect, useReducer } = React;
   const [url, setUrl] = useState(initialUrl);
@@ -75,23 +84,31 @@ const dataFetchReducer = (state, action) => {
       throw new Error();
   }
 };
-
+// App that gets data from Hacker News url
 function App() {
   const { Fragment, useState, useEffect, useReducer } = React;
   const [query, setQuery] = useState("MIT");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
   const [{ data, isLoading, isError }, doFetch] = useDataApi(
     "https://hn.algolia.com/api/v1/search?query=MIT",
     {
       hits: [],
     }
   );
-
+  const handlePageChange = (e) => {
+    setCurrentPage(Number(e.target.textContent));
+  };
+  let page = data.hits;
+  if (page.length >= 1) {
+    page = paginate(page, currentPage, pageSize);
+    console.log(`currentPage: ${currentPage}`);
+  }
   return (
     <Fragment>
       <form
         onSubmit={(event) => {
           doFetch(`http://hn.algolia.com/api/v1/search?query=${query}`);
-
           event.preventDefault();
         }}
       >
@@ -109,7 +126,7 @@ function App() {
         <div>Loading ...</div>
       ) : (
         <ul>
-          {data.hits.map((item) => (
+          {page.map((item) => (
             <li key={item.objectID}>
               <a href={item.url}>{item.title}</a>
             </li>
@@ -121,7 +138,13 @@ function App() {
         pageSize={pageSize}
         onPageChange={handlePageChange}
       ></Pagination>
-    </Fragment>
+      <input
+        type="number"
+        value={pageSize}
+        onChange={(event) => setPageSize(event.target.value)}
+      />
+      <label>Items per Page</label>
+</Fragment>
   );
 }
 
