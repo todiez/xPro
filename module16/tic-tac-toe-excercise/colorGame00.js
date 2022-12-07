@@ -1,16 +1,21 @@
+const Square = () => {
+  return <button></button>;
+};
+
 const Board = () => {
-  const [player, setPlayer] = React.useState(0);
+  const [player, setPlayer] = React.useState(1); //need to keep state updated to re-render on changes
   let status = `Player ${player}`;
+  function renderSquare(i) {
+    return <Square></Square>;
+  }
   return (
-    <div
-      className="game-board"
-      onClick={(e) => {
-        setPlayer(player + 1);
-        status = `Player ${player}`;
-      }}
-    >
-      <div id="info">
-        <h1>{status}</h1>
+    <div id="info">
+      <h1>{status}</h1>
+
+      <div className="game-board">
+        <div className="grid-row">{renderSquare(0)}{renderSquare(0)}{renderSquare(0)}</div>
+        <div className="grid-row">{renderSquare(0)}{renderSquare(0)}{renderSquare(0)}</div>
+        <div className="grid-row">{renderSquare(0)}{renderSquare(0)}{renderSquare(0)}</div>
       </div>
     </div>
   );
