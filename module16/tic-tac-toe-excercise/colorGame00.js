@@ -1,81 +1,150 @@
-//Child Component:
-const Square = ({ id, newState }) => {
-  const [color, setColor] = React.useState("green");
-  const [status, setStatus] = React.useState(null);
-  const xo = ["O", "X"];
-
-  const colorPalet = ["red", "green", "blue"];
-  const getRandomColor = () => colorPalet[Math.floor(Math.random() * 3)];
-
-  React.useEffect(() => {
-    //console.log(`Render ${id}`);
-    //console.log(`Render ${color}`);
-    return () => console.log(`unmounting Square ${id}`); //return in use effect === unmounting
-  });
-
-  //id in {} === props.id --> passing from parents to child via props
-  return (
-    <button
-      onClick={(e) => {
-        let col = getRandomColor(); //needed in two lines to avoid state delay
-        setColor(col);
-        let nextPlayer = newState({id: id, color:col}); //calling the function from the parent --> setting the state for the gameboard
-        setStatus(nextPlayer);
-        e.target.style.background = col;
-        //alert(`I'm square ${id}`);
-      }}
-    >
-      <h1>{xo[status]}</h1>
-    </button>
-  );
-};
-
 const Board = () => {
-  const [player, setPlayer] = React.useState(1); //need to keep state updated to re-render on changes
-  const [state, setState] = React.useState([]); //overall game state, starts with empty array
-  const [mounted, setMounted] = React.useState(true);
-  const [random, setRandom] = React.useState(0);
-  let status = `Player ${player}`;
-  const toggle = () => setMounted(!mounted);
-  const reRender = () => setRandom(Math.random()); //a reRender of the parent forces the reRender of the child, reRenders are implied by changing the state of a component
+  // 1st player is X ie 1
+  // State keeps track of next player and gameState
+  const [player, setPlayer] = React.useState(1);
+  const [gameState, setGameState] = React.useState([]);
+  let status = `Winner is ${checkForWinner(gameState)}`;
 
-  //parent function --> needs to be called von the child (square)
-  const newState = obj => {
-    let nextPlayer = (player + 1) % 2;
-    setPlayer(nextPlayer);
-    setState([...state, obj]); //adding obj to already existing state
-    console.log(`current state ${JSON.stringify(state)}`);
-    status = `Player ${nextPlayer}`
-    return nextPlayer; //returning nextPlayer gives it back to child, because we got called from Child
-  }
-  const currentState = () => {
-    let curState = state.slice(state.length-3, state.length)
-    console.log(`current state ${JSON.stringify(curState)}`);
-  }
+  //if (status === 'Winner is Player O' || 'Winner is Player X') {
+  //alert("Restart in 3 seconds!")
+  //setTimeout("location.reload(true);", 3000);
+  //}
+  const restartGame = () => {
+    //alert("Restart in 3 seconds!")
+    setTimeout("location.reload(true);", 500);
+  };
 
+  // Part 1 step 1 code goes here
+  // Use conditional logic to set a variable to either 'Player O' or  'Player X'
+  let nextPlayer = `Next Player: ${player == "0" ? "Player O" : "Player X"}`;
+
+  console.log(`We hav a winner ${status}`);
+
+  const takeTurn = (id) => {
+    setGameState([...gameState, { id: id, player: player }]);
+    setPlayer((player + 1) % 2); // get next player
+    return player;
+  };
   function renderSquare(i) {
-    //factory for square production, passing in id, player and the function newState to use it in the Child
-    return <Square id={i} player={player} newState={newState}></Square>;
+    // use properties to pass callback function takeTurn to Child
+    return <Square takeTurn={takeTurn} id={i}></Square>;
   }
+
   return (
-    //parent
     <div className="game-board">
       <div className="grid-row">
-        {mounted && renderSquare(0)}
-        {mounted && renderSquare(1)}
-        {mounted && renderSquare(2)}
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
       </div>
-
+      <div className="grid-row">
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
+      </div>
+      <div className="grid-row">
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
+      </div>
       <div id="info">
-        <button onClick={toggle}>Show/Hide Row</button>
-        <button onClick={reRender}>Re-render</button>
-        <button onClick={currentState}>Show CurrentState in Console</button>
+        <button onClick={() => restartGame()}>Restart Game</button>
+        <h1 id="turn">{nextPlayer}</h1>
         <h1>{status}</h1>
       </div>
     </div>
   );
 };
 
+const Square = ({ takeTurn, id }) => {
+  const mark = ["O", "X", "+"];
+  // id is the square's number
+  // filled tells you if square has been filled
+  // tik tells you symbol in square (same as player)
+  // You call takeTurn to tell Parent that the square has been filled
+  const [filled, setFilled] = React.useState(false);
+  const [tik, setTik] = React.useState(2);
+
+  return (
+    <button
+      // Part 2: update the return statement below to add css classes
+      className={tik == 1 ? "red" : "white"}
+      onClick={() => {
+        setTik(takeTurn(id));
+        setFilled(true);
+        //console.log(`Square: ${id} filled by player : ${tik}`);
+      }}
+    >
+      <h1>{mark[tik]}</h1>
+    </button>
+  );
+};
+
+const Game = () => {
+  return (
+    <div className="game">
+      <Board></Board>
+    </div>
+  );
+};
+
+// Checking for Winner takes a bit of work
+// Use JavaScript Sets to check players choices
+// against winning combinations
+// Online there is more compact version but Dr. Williams prefers this one
+
+const win = [
+  // rows
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  // cols
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  // diagonal
+  [0, 4, 8],
+  [2, 4, 6],
+];
+
+const checkPlayerTurn = (gameState) => {
+  return gameState.player;
+};
+
+const checkForWinner = (gameState) => {
+  // get array of box id's
+  // can't be a winner in less than 5 turns
+  if (gameState.length < 5) return "No Winner Yet";
+  let p0 = gameState.filter((item) => {
+    if (item.player == 0) return item;
+  });
+  p0 = p0.map((item) => item.id);
+  let px = gameState.filter((item) => {
+    if (item.player == 1) return item;
+  });
+  px = px.map((item) => item.id);
+  if (p0 != null && px != null) {
+    var win0 = win.filter((item) => {
+      return isSuperset(new Set(p0), new Set(item));
+    });
+    var winX = win.filter((item) => {
+      return isSuperset(new Set(px), new Set(item));
+    });
+  }
+  if (win0.length > 0) return "Player O ";
+  else if (winX.length > 0) return "Player X ";
+  return "No Winner Yet";
+};
+// check if subset is in the set
+function isSuperset(set, subset) {
+  for (let elem of subset) {
+    if (!set.has(elem)) {
+      return false;
+    }
+  }
+  return true;
+}
+
 // ========================================
 
-ReactDOM.render(<Board />, document.getElementById("root"));
+ReactDOM.render(<Game />, document.getElementById("root"));
