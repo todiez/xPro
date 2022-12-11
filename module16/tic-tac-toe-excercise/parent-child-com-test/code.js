@@ -1,17 +1,15 @@
 const Parent = () => {
-  const [state, setState] = React.useState(
-    "Child said nothing so far"
-  );
+  const [state, setState] = React.useState("Child said nothing so far");
 
   const changeStatefromChild = () => {
-    setState("This was activated from Child, but we are in Parent component!")
+    setState("This was activated from Child, but we are in Parent component!");
   };
 
   return (
     <div className="game-board">
       <h1>Parent: {state}</h1>
       <div className="grid-row">
-      <Child state={state} change={changeStatefromChild}></Child>
+        <Child state={state} change={changeStatefromChild}></Child>
       </div>
     </div>
   );
@@ -27,9 +25,7 @@ const Child = ({ state, change }) => {
 };
 
 const App = () => {
-  return (
-      <Parent></Parent>
-  );
+  return <Parent></Parent>;
 };
 
 // ========================================
