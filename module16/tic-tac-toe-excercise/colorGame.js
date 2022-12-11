@@ -17,6 +17,7 @@ const Square = ({ takeTurn, id }) => {
   );
 };
 
+
 const Board = () => {
   // 1st player is 1
   // State keeps track of next player
