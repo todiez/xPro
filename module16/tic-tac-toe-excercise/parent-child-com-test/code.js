@@ -11,17 +11,17 @@ const Parent = () => {
     <div className="game-board">
       <h1>Parent: {state}</h1>
       <div className="grid-row">
-      <Child state={state} changeStatefromChild={changeStatefromChild}></Child>
+      <Child state={state} change={changeStatefromChild}></Child>
       </div>
     </div>
   );
 };
 
-const Child = ({ state, changeStatefromChild }) => {
+const Child = ({ state, change }) => {
   return (
     <div>
       <h4>Child has just a button and got this String from parent: {state}</h4>
-      <button onClick={changeStatefromChild}>ChildButton: Let child talk</button>
+      <button onClick={change}>ChildButton: Let child talk</button>
     </div>
   );
 };
