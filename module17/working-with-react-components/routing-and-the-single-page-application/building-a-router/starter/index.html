@@ -63,7 +63,7 @@
 <script>
 // object, that holds the routes:
 const routes = {
-  '':         'home.html',
+  '':         'home.html', //fist loading
   '/':        'home.html',
   '#/home':   'home.html',
   '#/signin': 'signin.html',
@@ -80,7 +80,19 @@ const routes = {
     //get path (route) for page --> using hash [link] as key for routes object
     let route = routes[link];
 
+    //if route exists, then load page
+    if(route) loadPage(route);
+
   }
+  router(); 
+
+  async function loadPage(url) {
+    const res = await fetch(url);
+    const content = await res.text();
+    const element = document.getElementById('content');
+    element.innerHTML = content;
+  }
+
   window.addEventListener('hashchange', router)
   
 </script>

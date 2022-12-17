@@ -87,14 +87,12 @@
 
         var count = (link.split("/").length - 1);        
         if (count > 1) {
-            // anchor element 
-            innerElement = link.split("/")[2];            
+          //anchor element
+          innerElement = link.split("/")[2];
 
-            // page to load
-            link = '#/' + link.split("/")[1];
+          //page to load
+          link = '/#' + link.split("/")[1];
         }
-
-
 
         // get path (route) for page
         var route = routes[link];
