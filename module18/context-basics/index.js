@@ -4,6 +4,7 @@ function Spa() {
   const Route = ReactRouterDOM.Route;
   const Link = ReactRouterDOM.Link;
   const HashRouter = ReactRouterDOM.HashRouter;
+  let counter = 0;
 
   return (
     <HashRouter>
@@ -13,7 +14,7 @@ function Spa() {
         <Link to="/about/">About</Link> --
         <Link to="/products">Products</Link>
         <hr />
-        <UserContext.Provider value={{ users: ["paz"] }}>
+        <UserContext.Provider value={{users: ["Paz"], count: 0}}>
           <Route path="/" exact component={Home} />
           <Route path="/about/" component={About} />
           <Route path="/products/" component={Products} />
