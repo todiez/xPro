@@ -1,5 +1,7 @@
 import React from 'react';
+import { api } from './api';
 import './App.css';
+import MyComponent from './MyComponent';
 
 function App(){
   const [items,setItems] = React.useState([]);
@@ -7,8 +9,10 @@ function App(){
 
   function handleSubmit(e){
     e.preventDefault();
-    setItems([...items,value]);
-    setValue('');
+    api.createItem(value).then((persistedItem) => {
+      setItems([...items,value]);
+      setValue('');    
+    });
   }
 
   return (
@@ -40,5 +44,13 @@ function TodoList(props){
     </ul>
   );
 }
+
+// function App() {
+//   return (
+//   <div className="App">
+//     <MyComponent/>
+//   </div>
+//  );
+// }
 
 export default App;
