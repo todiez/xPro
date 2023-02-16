@@ -19,6 +19,31 @@
       "id": 4,
       "title": "lowdb wesome",
       "publish": true
+    },
+    {
+      "id": 1,
+      "title": "lowdb is awesome",
+      "publish": true
+    },
+    {
+      "id": 2,
+      "title": "lowdb is 1",
+      "publish": true
+    },
+    {
+      "id": 3,
+      "title": "lowdb is asome",
+      "publish": true
+    },
+    {
+      "id": 4,
+      "title": "lowdb wesome",
+      "publish": true
+    },
+    {
+      "id": "1",
+      "title": "ping",
+      "published": "false"
     }
   ]
 }
