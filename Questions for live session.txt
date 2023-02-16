@@ -1,0 +1,13 @@
+what is the difference between "npm start" and "npm run start"
+
+what does webvitals from React?
+
+
+what is the difference between hashrouter and browser router? What is switch?
+
+
+SPA means that there is merely one request to the server once you 
+open up the site in your browser. Further, the routing is done
+by react in the browser on the front end.
+What about the content then? All "not showed pages" must be already
+loaded and available once a user hits a button.
