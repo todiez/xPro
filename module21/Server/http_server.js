@@ -19,6 +19,7 @@ app.get('/data', function(req, res){
 
 });
 
+
 // ----------------------------------------------------
 // add post - test using:
 //      curl http://localhost:3000/posts/ping/1/false
