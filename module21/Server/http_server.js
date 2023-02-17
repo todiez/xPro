@@ -13,10 +13,8 @@ app.use(express.static('public'));
 db.defaults({ posts: []}).write();
 
 // list posts
-app.get('/data', function(req, res){     
-
+app.get('/data', function(req, res){    
     res.send(db.get('posts').value());
-
 });
 
 
