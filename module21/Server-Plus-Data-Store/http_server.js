@@ -1,6 +1,7 @@
 const express = require('express');
 const app     = express();
 var low     = require('lowdb');
+var pull = require('lodash.pull');
 var fs      = require('lowdb/adapters/FileSync');
 var adapter = new fs('db.json');
 var db      = low(adapter);
@@ -52,17 +53,27 @@ app.get('/published/:boolean', function(req, res){
 // ----------------------------------------------------
 app.get('/published/:id/:boolean', function(req, res){
 
-    // YOUR CODE
+    db.get('posts').find({id: req.params.id})
+            .assign({published: req.params.boolean})
+            .write();
 
 });
 
 // ----------------------------------------------------
 // delete entry by id - test using:
-//      curl http://localhost:3000/delete/5
+//      curl http://localhost:3000/delete/2
 // ----------------------------------------------------
 app.get('/delete/:id/', function(req, res){
 
-    // YOUR CODE
+    db.get("posts").remove({id: req.params.id}).write();
+    // res.send(db.get('posts').value());
+    res.status(204).send();
+
+});
+
+app.get('/deleteAll', function(req, res){
+    db.get("posts").remove().write();
+    res.status(204).send();
 
 });
 
