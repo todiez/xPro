@@ -64,11 +64,7 @@ app.get('/published/:id/:boolean', function(req, res){
 //      curl http://localhost:3000/delete/2
 // ----------------------------------------------------
 app.get('/delete/:id/', function(req, res){
-
     db.get("posts").remove({id: req.params.id}).write();
-    // res.send(db.get('posts').value());
-    res.status(204).send();
-
 });
 
 app.get('/deleteAll', function(req, res){
