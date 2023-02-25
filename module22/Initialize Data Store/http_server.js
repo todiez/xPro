@@ -14,6 +14,10 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// serve static files from public directory
+// -------------------------------------------
+app.use(express.static('public'));
+
 // return all users
 app.get('/data', function(req, res){     
     res.send(db.get('users').value());
@@ -23,6 +27,12 @@ app.get('/data', function(req, res){
 app.post("/test", function(req, res){
     console.log(req.body.username, req.body.password);
     res.send(req.body.username + " " + req.body.password);
+
+    var user = {
+        'name'          : req.body.username,
+        'dob'           : req.body.password,
+    }
+    db.get('users').push(user).write();
 });
 
 // add user

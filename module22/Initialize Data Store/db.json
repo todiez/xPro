@@ -1,17 +1,17 @@
 {
   "users": [
     {
-      "name": " req.body.name",
-      "dob": " req.body.dob",
-      "email": " req.body.email",
-      "username": " req.body.username",
-      "password": " req.body.password",
-      "phone": "req.body.phone",
-      "streetaddress": " req.body.streetaddress",
-      "citystatezip": " req.body.citystatezip",
-      "latitude": " req.body.latitude",
-      "longitude": " req.body.longitude",
-      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1212.jpg"
+      "name": "Quincy Mueller",
+      "dob": "1962-7-13",
+      "email": "Quincy_Mueller12@yahoo.com",
+      "username": "Quincy.Mueller96",
+      "password": "afi02GYxC67YSvx",
+      "phone": "444-229-2185 x8178",
+      "streetaddress": "2677 Ritchie Burg",
+      "citystatezip": "East Evelynburgh, WY 91617-3902",
+      "latitude": "-30.4964",
+      "longitude": "177.5580",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1224.jpg"
     }
   ]
 }
