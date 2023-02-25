@@ -4,27 +4,25 @@ const low     = require('lowdb');
 const fs      = require('lowdb/adapters/FileSync');
 const adapter = new fs('db.json');
 const db      = low(adapter);
-const cors    = require('cors');
 const { faker } = require('@faker-js/faker');
 
-// allow cross-origin resource sharing (CORS)
-app.use(cors());
+// init the data store
+db.defaults({ users: []}).write();
 
 // data parser - used to parse post data
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// serve static files from public directory
-// -------------------------------------------
-app.use(express.static('public'));
-
-// init the data store
-db.defaults({ users: []}).write();
-
 // return all users
 app.get('/data', function(req, res){     
     res.send(db.get('users').value());
+});
+
+//post route
+app.post("/test", function(req, res){
+    console.log(req.body.username, req.body.password);
+    res.send(req.body.username + " " + req.body.password);
 });
 
 // add user
