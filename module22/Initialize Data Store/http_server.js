@@ -4,6 +4,7 @@ const low     = require('lowdb');
 const fs      = require('lowdb/adapters/FileSync');
 const adapter = new fs('db.json');
 const db      = low(adapter);
+const cors    = require('cors');
 const { faker } = require('@faker-js/faker');
 
 // init the data store
