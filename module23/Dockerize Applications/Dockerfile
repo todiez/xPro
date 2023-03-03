@@ -1,14 +1,11 @@
-FROM node:alpine
+FROM node:slim
 
-# set directory "cd /app"
+LABEL todiez
+
 WORKDIR /app
 
-# install npm dependencies
+
+# copy code, install npm dependencies
+COPY index.js /app/index.js
 COPY package.json /app/package.json
 RUN npm install
-
-# copy code
-COPY index.js /app/index.js
-
-# the program to run
-ENTRYPOINT [ "npm", "start" ]
