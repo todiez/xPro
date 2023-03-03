@@ -1,6 +1,6 @@
 FROM node:slim
 
-MAINTAINER abelsan <abel@mit.edu>
+MAINTAINER todiez
 
 WORKDIR /app
 

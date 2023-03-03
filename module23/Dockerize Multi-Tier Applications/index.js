@@ -14,6 +14,7 @@ MongoClient.connect(url, function (err, database) {
 
 app.get('/', function(req, res){
     res.send('Greetings from the server!!');
+    console.log("Running on Port")
 });
 
 app.get('/createMongo', function(req, res){ 
@@ -44,4 +45,8 @@ app.get('/readMongo', function(req, res){
 
 
 
-app.listen(3000);
+var port = 3000;
+
+app.listen(port, function () {
+  console.log("Listening on port:" + port);
+});
