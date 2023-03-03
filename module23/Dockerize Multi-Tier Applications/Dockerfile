@@ -1,6 +1,6 @@
 FROM node:slim
 
-MAINTAINER todiez
+LABEL key="todiez"
 
 WORKDIR /app
 
