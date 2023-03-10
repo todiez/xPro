@@ -6,12 +6,15 @@ var restaurants = [
 ];
 
 const app = express();
+
+//options for public folder
 app.use(express.json());
 let options = {
   dotfiles: "ignore",
   redirect: false,
 };
 
+//adding img folder or rather public to access
 app.use(express.static("public", options));
 
 app.get("/", (req, res) => {
