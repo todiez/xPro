@@ -68,6 +68,37 @@
                     }
                 }
             }
+        },
+        "/restaurant/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of restaurant which needs to be deleted",
+                    "type": "integer"
+                }
+            ],
+            "delete": {
+                "tags": ["Restaurants"],
+                "summary": "Delete a Restaurants in system",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Restaurant"
+                        }
+                    }
+                }
+            },
+            "responses": {
+              "204": {
+                "description": "Restaurant deleted"
+              },
+              "404": {
+                "description": "Restaurant not found"
+              }
+            }
         }
     },
     "definitions": {

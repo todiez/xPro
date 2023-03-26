@@ -41,11 +41,15 @@ app.get('/books', (req,res) => {
     ]);
 });
 
+app.get('/', (req, res) => {
+    res.send("Hello Paz!");
+});
+
 /**
 * @swagger
 * /book:
 *   post:
-*     description: Get one book
+*     description: Get one book right now!
 *     parameters:
 *     - name: title
 *       description: Book title
