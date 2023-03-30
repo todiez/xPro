@@ -1,17 +1,20 @@
-(function(){
 
+
+(function(){
+	// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+
+	
 	// Your web app's Firebase configuration
 	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-	var firebaseConfig = {
-		apiKey: "AIzaSyBboZP3WoD5Os9mOv4QGWej9Cu5lmI-bIM",
-		authDomain: "course-92aae.firebaseapp.com",
-		databaseURL: "https://course-92aae.firebaseio.com",
-		projectId: "course-92aae",
-		storageBucket: "course-92aae.appspot.com",
-		messagingSenderId: "906967504618",
-		appId: "1:906967504618:web:a5b51551a229502dc7a993",
-		measurementId: "G-PWBBC8GN6B"
-	};
+	const firebaseConfig = {
+		apiKey: "AIzaSyDeK8QT6bmREqlFhfwBuFIhuH5U3i2-QR8",
+		authDomain: "firstfirebase-fca93.firebaseapp.com",
+		databaseURL: "https://firstfirebase-fca93-default-rtdb.europe-west1.firebasedatabase.app",
+		projectId: "firstfirebase-fca93",
+		storageBucket: "firstfirebase-fca93.appspot.com",
+		messagingSenderId: "450099128247",
+		appId: "1:450099128247:web:84a51452f16a4047466a32"
+	  };
 	// Initialize Firebase
 	firebase.initializeApp(firebaseConfig);
 
@@ -27,6 +30,7 @@
 
 	// write
 	write.addEventListener('click', e => {
+		console.log('write triggered');
 		const messages = db.ref('messages');
 
 		// simple id - ok for example, do not use in production
@@ -41,6 +45,7 @@
 
 	// read
 	read.addEventListener('click', e => {
+		console.log('read triggered');
 		status.innerHTML = '';
 		const messages = db.ref('messages');
 
