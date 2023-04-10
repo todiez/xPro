@@ -1,3 +1,4 @@
+
 var ui = {};
 
 ui.navigation = `
@@ -75,40 +76,35 @@ navigation.innerHTML += ui.navigation;
 
 ui.createAccount = `
 <div class="card text-white bg-primary mb-3" style="max-width: 18rem">
-<div class="card-header">Create Account</div>
-<div class="card-body">
-  Name<br />
-  <input
-    type="input"
-    class="form-control"
-    id="name"
-    placeholder="Enter name"
-  /><br />
-  Email address<br />
-  <input
-    type="input"
-    class="form-control"
-    id="name"
-    placeholder="Enter email"
-  /><br />
-  Password<br />
-  <input
-    type="input"
-    class="form-control"
-    id="name"
-    placeholder="Enter password"
-  /><br />
-  <button type="submit" id="submit" class="btn" onclick="create()">
-    Create Account
-  </button>
-
-  <h5 class="card-title">Primary card title</h5>
-  <p class="card-text">
-    Some quick example text to build on the card title and make up the
-    bulk of the card's content.
-  </p>
-</div>
-</div>
+    <div class="card-header">Create Account</div>
+    <div class="card-body">
+      Name<br />
+      <input
+        type="input"
+        class="form-control"
+        id="name"
+        placeholder="Enter name"
+      /><br />
+      Email address<br />
+      <input
+        type="input"
+        class="form-control"
+        id="email"
+        placeholder="Enter email"
+      /><br />
+      Password<br />
+      <input
+        type="input"
+        class="form-control"
+        id="password"
+        placeholder="Enter password"
+      /><br />
+      <button type="submit" id="submit" class="btn-light" onclick="create()">
+        Create Account
+      </button>
+      <div id="createStatus"></div>
+    </div>
+  </div>
 `;
 
 ui.login = `
@@ -278,41 +274,13 @@ ui.default = `
 `;
 
 ui.allData = `
-<div class="card text-white bg-primary mb-3" style="max-width: 18rem">
-<div class="card-header">All Data</div>
-<div class="card-body">
-  Name<br />
-  <input
-    type="input"
-    class="form-control"
-    id="name"
-    placeholder="Enter name"
-  /><br />
-  Email address<br />
-  <input
-    type="input"
-    class="form-control"
-    id="name"
-    placeholder="Enter email"
-  /><br />
-  Password<br />
-  <input
-    type="input"
-    class="form-control"
-    id="name"
-    placeholder="Enter password"
-  /><br />
-  <button type="submit" id="submit" class="btn" onclick="create()">
-    Create Account
+  <h5>All stored Data</h5>
+
+  <button type="button" class="btn btn-secondary" onclick="allData()">
+    Show all Data
   </button>
 
-  <h5 class="card-title">Primary card title</h5>
-  <p class="card-text">
-    Some quick example text to build on the card title and make up the
-    bulk of the card's content.
-  </p>
-</div>
-</div>
+<div id="allDataStatus"></div>
 `;
 
 var loadCreateAccount = function() {
