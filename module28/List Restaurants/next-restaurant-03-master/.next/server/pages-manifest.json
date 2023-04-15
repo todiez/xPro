@@ -2,6 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/restaurants": "pages/restaurants.js",
-  "/restaurants/[restaurant]": "pages/restaurants/[restaurant].js"
+  "/restaurants/[restaurant]": "pages/restaurants/[restaurant].js",
+  "/contact": "pages/contact.js",
+  "/privacy": "pages/privacy.js",
+  "/restaurants": "pages/restaurants.js"
 }
